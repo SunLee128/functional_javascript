@@ -24,4 +24,6 @@ addFive(4) // 9
 addFive(15) // 20
 addFive(8) // 13
 
-const add2 = x => y => x + y
+// const add = x => y => x + y
+// const add10 = add(10)
+// console.log(add10(5))
