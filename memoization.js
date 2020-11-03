@@ -35,3 +35,19 @@ const memoizedAdd = memoize(add)
 
 //   return n * factorial(n - 1)
 // })
+
+
+/*
+
+function Profile({ name, location }) {
+  return (
+    <div>
+      <div>{name}</div>
+      <div>{location}</div>
+    </div>
+  )
+}
+
+const MemoizedProfile = React.memo(Profile)
+
+*/

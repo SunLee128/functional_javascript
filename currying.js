@@ -27,3 +27,4 @@ addFive(8) // 13
 // const add = x => y => x + y
 // const add10 = add(10)
 // console.log(add10(5))
+
