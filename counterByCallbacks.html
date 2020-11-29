@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter</title>
+</head>
+<body>
+  <Button id="plus">+</Button>
+  <Button id="minus">-</Button>
+</body>
+<script>
+  //set up the document eventListener
+  let addListener = (selector, eventType) => listener => {
+    let element = document.querySelector(selector)
+    element.addEventListener(eventType, listener)
+  }
+
+  //wiring DOM & type of the event
+  // example of how to call them:
+  // plusClick('#plus', 'click')((value) => console.log(value))
+  // This function will setup the "#plus" button to listen to the click event, and will call the last function passed. this will result in loggin in the console the MouseEvent from all the clicks to the button with id "#plus"
+  let plusClick = addListener("#plus", "click")
+  let minusClick = addListener("#minus", "click")
+
+  let hardCode = newValue => broadcaster => listener => {
+    broadcaster(value => {
+      listener(newValue) // newValue is being passed always to the listener function
+    })
+  }
+
+  let plusOne = hardCode(1)(plusClick)
+  let minusOne = hardCode(-1)(minusClick)
+
+  let add = initial => broadcaster => listener => {
+     broadcaster(value => {
+      listener(initial += value)
+    })
+  }
+
+  let merge = (b1, b2) => listener => {
+    b1(listener)
+    b2(listener)
+  }
+
+  let counter = add(0)(merge(plusOne, minusOne))
+
+  counter(value => {
+    console.log(value)
+  })
+
+</script>
+</html>
